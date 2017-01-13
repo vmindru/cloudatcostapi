@@ -30,5 +30,9 @@ http://docs.ansible.com/ansible/intro_dynamic_inventory.html
 * refactor var names, some of them might be misleading atm
 * add verbose output
 
+## Installation
+
+clone this repo, and copy cloudatcost.py into your PYTHON path, e.g. /usr/lib/python2.7/site-packages/ 
+
 ## Demo !! 
 ![](/examples/example.gif)
