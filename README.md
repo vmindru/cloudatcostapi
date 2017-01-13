@@ -53,6 +53,13 @@ cloudpro-delete: Request server deletion, sid = SERVERID
 ```
 
 
+## CLI
+
+use cloudatcost-cli.py ,you can copy this into /usr/bin/cloudatcost 
+```
+cloudatcost help
+```
+
 ## To Do
 
 * refactor var names, some of them might be misleading atm
