@@ -55,6 +55,23 @@ class cloudatcost():
             "cloudpro-build": "/api/v1/cloudpro/build.php",
             "cloudpro-delete": "/api/v1/cloudpro/delete.php", }
 
+        self.help_message = {
+            "listservers": "List all available servers",
+            "listtemplates": "List all available templates",
+            "listtasks": "List running tasks",
+            "cloudpro-resources": "List cloudpro-resources",
+            "powerop": "Activate server power operations, sid = SERVERID,\
+ action = [poweron, poweroff, reset]",
+            "renameserver": "Rename server, name = NAME, sid = SERVERID",
+            "rdns": "Modify reverse dns (ptr),sid = SERVERID, \
+hostname = HOSTNAME",
+            "console": "Returns request URL for console, sid = SERVERID",
+            "runmode": "Change run mode, sid = SERVERID,\
+mode=[normal,safe]",
+            "cloudpro-build": "Request new server build,\
+cpu = [1,2,3,4,5..16],ram = 1024,storage = [10,20,30..1000],os=templateid",
+            "cloudpro-delete": "Request server deletion, sid = SERVERID", }
+
     def _build_params(self):
         """_build_params
            private function, called by request() to get request params
@@ -75,6 +92,11 @@ class cloudatcost():
         """
         self.params = params
         self.request = request
+        if request == "help":
+            for action in self.help_message:
+                print action+": "+self.help_message[action]+"\n"
+            sys.exit(0)
+
         if request in self.request_get_list:
             self.request_uri = self.request_get_list[request]
             self.request_type = "get"
