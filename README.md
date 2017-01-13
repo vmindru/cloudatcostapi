@@ -1,4 +1,4 @@
-# cloudatcost API python wrapper
+# cloudatcost API python wrapper and command line tool
 
 This module allows you to perform cloudatcost API calls.
 
