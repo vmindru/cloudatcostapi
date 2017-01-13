@@ -33,7 +33,8 @@ class cloudatcost():
 
     To Do
 
-    refactor var names, some of them might be misleading atm
+    * refactor var names, some of them might be misleading atm
+    * add verbose output
     """
     def __init__(self, key, login):
         self.value = "init"
@@ -87,7 +88,6 @@ class cloudatcost():
                 .format(request)
             sys.exit(1)
         url, request_data = self._build_params()
-        print request_data
         if self.request_type == "get":
             self.req = requests.get(url, params=request_data)
         elif self.request_type == "post":
@@ -103,11 +103,8 @@ class cloudatcost():
             print the response from request()
         """
         if self.req.ok is True:
-            # print self.req.text
-            print self.req.url
             req_json = json.loads(self.req.text)
             if req_json["status"] == "ok":
-                # print json.dumps(req_json, indent=4)
                 if self.request_type == "post":
                     return json.dumps(req_json, indent=4)
                 elif self.request_type == "get":
