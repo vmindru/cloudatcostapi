@@ -71,3 +71,6 @@ clone this repo, and copy cloudatcost.py into your PYTHON path, e.g. /usr/lib/py
 
 ## Demo !! 
 ![](/examples/example.gif)
+
+##Donate 
+https://www.paypal.me/vmindru
