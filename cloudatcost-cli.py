@@ -9,10 +9,12 @@ if __name__ == "__main__":
         key = os.environ.get('CLOUDATCOST_KEY')
     else:
         print "Please define bash CLOUDATCOST_KEY var first"
+        sys.exit(1)
     if os.environ.has_key('CLOUDATCOST_LOGIN'):
         login = os.environ.get('CLOUDATCOST_LOGIN')
     else:
         print "Please define bash CLOUDATCOST_LOGIN var first"
+        sys.exit(1)
     if len(sys.argv) == 2:
         cl = cloudatcost(key, login)
         cl.request(sys.argv[1])
