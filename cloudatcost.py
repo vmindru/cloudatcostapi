@@ -124,16 +124,22 @@ cpu = [1,2,3,4,5..16],ram = 1024,storage = [10,20,30..1000],os=templateid",
             print the response from request()
         """
         if self.req.ok is True:
-            req_json = json.loads(self.req.text)
-            if req_json["status"] == "ok":
-                if self.request_type == "post":
-                    return json.dumps(req_json, indent=4)
-                elif self.request_type == "get":
-                    return json.dumps(req_json["data"], indent=4)
-                else:
-                    print "Ups something gone wrong, invalid request type {}"\
-                        .format(self.request_type)
-                    sys.exit(1)
+            """ there is a known issue with listtasks, excluding this until\
+solved"""
+            if self.request == "listtasks":
+                print "listtasks does not work\
+https://github.com/vmindru/cloudatcostapi/issues/1"
+            else:
+                req_json = json.loads(self.req.text)
+                if req_json["status"] == "ok":
+                    if self.request_type == "post":
+                        return json.dumps(req_json, indent=4)
+                    elif self.request_type == "get":
+                        return json.dumps(req_json["data"], indent=4)
+                    else:
+                        print "Ups something gone wrong, invalid request type {}"\
+                            .format(self.request_type)
+                        sys.exit(1)
         else:
             print "the request {} failed, status: {}, message: {}"\
                 .format(self.req.url,
