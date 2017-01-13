@@ -1,0 +1,11 @@
+#!/usr/bin/python
+
+from cloudatcost import cloudatcost
+key = '' # details at https://panel.cloudatcost.com/api-details.php
+login = '' # details at https://panel.cloudatcost.com/api-details.php
+
+
+# returns ansible dynamic inventory format
+cl = cloudatcost(key, login)
+cl.request("listservers")
+cl.ansible_inventory()
