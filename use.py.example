@@ -1,11 +1,32 @@
 #!/usr/bin/python
 
+import sys
+
 from cloudatcost import cloudatcost
-key = '' # details at https://panel.cloudatcost.com/api-details.php
-login = '' # details at https://panel.cloudatcost.com/api-details.php
+key = '' # https://panel.cloudatcost.com/api-details.php
+login = '' # https://panel.cloudatcost.com/api-details.php
 
 
-# returns ansible dynamic inventory format
-cl = cloudatcost(key, login)
-cl.request("listservers")
-cl.ansible_inventory()
+# KEEP CREDENTIALS AS BASH VARIABLES, A BIT MORE SECURE THAN PLAIN TEXT
+#if os.environ.has_key('CLOUDATCOST_KEY'):
+#   key=os.environ.get('CLOUDATCOST_KEY')
+#else:
+#   key=''
+#if os.environ.has_key('CLOUDATCOST_LOGIN'):
+#   login=os.environ.get('CLOUDATCOST_LOGIN')
+#else:
+#   login=''
+#
+
+
+
+if len(sys.argv) == 2:
+    cl = cloudatcost(key, login)
+    cl.request(sys.argv[1])
+    print cl.response()
+elif len(sys.argv) > 2:
+    cl = cloudatcost(key, login)
+    cl.request(sys.argv[1], sys.argv[2:])
+    print cl.response()
+else:
+    print "input operation"
