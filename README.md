@@ -13,14 +13,14 @@ List all servers
 ## Rename server
 ```
     cl = cloudatcost(key, login)
-    cl.request("listservers",['sid=123123123','name=test'])
+    cl.request("renameserver",['sid=123123123','name=test'])
     print cl.response()
 ```
 ## Return Ansible dynamic inventory
 http://docs.ansible.com/ansible/intro_dynamic_inventory.html
 ```
     cl = cloudatcost(key, login)
-    cl.request("listservers",['sid=123123123','name=test'])
+    cl.request("listservers")
     print cl.ansible_inventory()
 ```
 
