@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+import sys
+import os
+import json
+from cloudatcost import cloudatcost
+
+if __name__ == "__main__":
+    if os.environ.has_key('CLOUDATCOST_KEY'):
+        key = os.environ.get('CLOUDATCOST_KEY')
+    else:
+        print "Please define bash CLOUDATCOST_KEY var first"
+        sys.exit(1)
+    if os.environ.has_key('CLOUDATCOST_LOGIN'):
+        login = os.environ.get('CLOUDATCOST_LOGIN')
+    else:
+        print "input operation"
+    cl = cloudatcost(key, login)
+    cl.request("listservers")
+    print json.dumps(cl.ansible_inventory(), indent=4)
+

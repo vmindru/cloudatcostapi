@@ -60,6 +60,14 @@ use cloudatcost-cli.py ,you can copy this into /usr/bin/cloudatcost
 cloudatcost help
 ```
 
+## Ansible dynamic inventory 
+
+cloudatcost-api will return all your servers in Ansible dynamic inventory format
+
+```
+cloudatcost-api
+```
+
 ## To Do
 
 * refactor var names, some of them might be misleading atm
